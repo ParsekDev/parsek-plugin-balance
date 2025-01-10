@@ -8,8 +8,6 @@ import co.statu.rule.plugins.balance.BalancePlugin
 @EventListener
 class DatabaseEventHandler(private val balancePlugin: BalancePlugin) : DatabaseEventListener {
     override suspend fun onReady(databaseManager: DatabaseManager) {
-        databaseManager.migrateNewPluginId("balance", balancePlugin.pluginId, balancePlugin)
-
         databaseManager.initialize(balancePlugin, balancePlugin)
     }
 }
